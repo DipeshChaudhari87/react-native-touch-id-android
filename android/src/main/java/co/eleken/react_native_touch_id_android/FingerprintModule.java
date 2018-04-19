@@ -101,8 +101,8 @@ public class FingerprintModule extends ReactContextBaseJavaModule {
                 return;
             }
             
-            if (mReactContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_FINGERPRINT) ||
-                ((FingerprintManager) mReactContext.getSystemService(Context.FINGERPRINT_SERVICE)).isHardwareDetected()) {
+            if (mReactContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_FINGERPRINT) || (mReactContext.getSystemService(Context.FINGERPRINT_SERVICE)!=null &&
+                ((FingerprintManager) mReactContext.getSystemService(Context.FINGERPRINT_SERVICE)).isHardwareDetected())) {
                 if (((FingerprintManager) mReactContext.getSystemService(Context.FINGERPRINT_SERVICE)).hasEnrolledFingerprints()) {
                     sendResponse("ok", null, promise);
                 } else {
